@@ -14,8 +14,7 @@ export default async function handler(req: NextRequest) {
   const [sfProData] = await Promise.all([sfPro]);
 
   const { searchParams } = req.nextUrl;
-  const title = searchParams.get("title") || "Precedent";
-
+  
   return new ImageResponse(
     (
       <div
@@ -28,27 +27,22 @@ export default async function handler(req: NextRequest) {
           justifyContent: "center",
           backgroundColor: "white",
           backgroundImage:
-            "linear-gradient(to bottom right, #E0E7FF 25%, #ffffff 50%, #CFFAFE 75%)",
+            "linear-gradient(to bottom right, #c6ffdd 25%, #fbd786 50%, #f7797d 75%)",
         }}
       >
-        <img
-          src={new URL("../../public/logo.png", import.meta.url).toString()}
-          alt="Precedent Logo"
-          tw="w-20 h-20 mb-4 opacity-95"
-        />
         <h1
           style={{
             fontSize: "100px",
             fontFamily: "SF Pro",
             background:
-              "linear-gradient(to bottom right, #000000 21.66%, #78716c 86.47%)",
+              "black",
             backgroundClip: "text",
             color: "transparent",
-            lineHeight: "5rem",
+            lineHeight: "8rem",
             letterSpacing: "-0.02em",
           }}
         >
-          {title}
+          🦜🔗 LangChainHub UI
         </h1>
       </div>
     ),

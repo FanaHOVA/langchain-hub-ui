@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-const DOMAIN = "https://precedent.dev";
+const DOMAIN = "https://langchain-hub-ui-production.up.railway.app";
 
 export default function Meta({
   title = "LangChainHub UI",
@@ -26,8 +26,8 @@ export default function Meta({
       <meta property="og:image" content={image} />
 
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:site" content="@vercel" />
-      <meta name="twitter:creator" content="@steventey" />
+      <meta name="twitter:site" content="@fanahova" />
+      <meta name="twitter:creator" content="@fanahova" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
