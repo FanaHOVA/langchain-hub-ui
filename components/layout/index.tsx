@@ -37,6 +37,18 @@ export default function Layout({
           <Link href="/" className="flex items-center font-display text-2xl">
             <p>🦜🔗 LangChainHub UI</p>
           </Link>
+          <div>
+            <AnimatePresence>
+              <a href='https://twitter.com/fanahova' target='_blank' rel='noreferrer'>
+                <motion.button
+                  className="rounded-full border border-grey bg-slate-300 p-1.5 px-4 text-sm text-black transition-all hover:bg-slate-200 hover:text-black"
+                  {...FADE_IN_ANIMATION_SETTINGS}
+                >
+                  w/ ❤️ by @FanaHOVA
+                </motion.button>
+              </a>
+            </AnimatePresence>
+          </div>
         </div>
       </div>
       <main className="flex w-full flex-col items-center justify-center py-32">
