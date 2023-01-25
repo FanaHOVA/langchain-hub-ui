@@ -15,11 +15,13 @@ const PromptModal = ({
   setShowPromptModal,
   prompt,
   githubPath,
-  name
+  name,
+  readme
 }: {
   showPromptModal: boolean;
   setShowPromptModal: Dispatch<SetStateAction<boolean>>;
   prompt: string;
+  readme: string;
   githubPath: string;
   name: string;
 }) => {
@@ -66,7 +68,7 @@ const PromptModal = ({
                 />
               ),
             }}>
-            {decodeURIComponent(prompt)}
+            {readme}
           </ReactMarkdown>
           </p>
         </div>

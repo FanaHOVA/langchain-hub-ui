@@ -55,6 +55,7 @@ model LangChainPrompt {
   id         String @id @default(cuid())
   name       String
   githubPath String
+  description String
   prompt     String
   readme     String
 }

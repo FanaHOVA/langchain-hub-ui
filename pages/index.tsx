@@ -92,13 +92,14 @@ export default function Home({ prompts }) {
       </motion.div>
       {/* here we are animating with Tailwind instead of Framer Motion because Framer Motion messes up the z-index for child components */}
       <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {prompts.map(({ name, prompt, readme, githubPath }) => (
+        {prompts.map(({ name, prompt, readme, description, githubPath }) => (
           <Card
               key={githubPath}
               githubPath={githubPath}
               prompt={prompt}
+              readme={readme}
               title={name}
-              description={readme}
+              description={description}
             />
         ))}
       </div>
