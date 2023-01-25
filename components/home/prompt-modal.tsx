@@ -92,7 +92,7 @@ const PromptModal = ({
 export function usePromptModal() {
   const [showPromptModal, setShowPromptModal] = useState(false);
 
-  const PromptModalCallback = useCallback((props) => {
+  const PromptModalCallback = useCallback((props: any) => {
     return (
         <PromptModal
             {...props}

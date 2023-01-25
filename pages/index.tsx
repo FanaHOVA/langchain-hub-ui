@@ -2,12 +2,8 @@ import Card from "@/components/home/card";
 import Layout from "@/components/layout";
 import Balancer from "react-wrap-balancer";
 import { motion } from "framer-motion";
-import { DEPLOY_URL, FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
+import { FADE_DOWN_ANIMATION_VARIANTS } from "@/lib/constants";
 import { Github, Twitter } from "@/components/shared/icons";
-import WebVitals from "@/components/home/web-vitals";
-import ComponentGrid from "@/components/home/component-grid";
-import Image from "next/image";
-import { Octokit } from "@octokit/core";
 import { PrismaClient } from '@prisma/client'
 
 export async function getStaticProps() {
@@ -15,12 +11,12 @@ export async function getStaticProps() {
 
   return {
     props: {
-      prompts: await prisma.LangChainPrompt.findMany()
+      prompts: await prisma.langChainPrompt.findMany()
     }
   }
 }
 
-export default function Home({ prompts }) {
+export default function Home({ prompts }: { prompts: any}) {
   return (
     <Layout>
       <motion.div
@@ -92,7 +88,7 @@ export default function Home({ prompts }) {
       </motion.div>
       {/* here we are animating with Tailwind instead of Framer Motion because Framer Motion messes up the z-index for child components */}
       <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {prompts.map(({ name, prompt, readme, description, githubPath }) => (
+        {prompts.map(({ name, prompt, readme, description, githubPath }: { name: string, prompt: string, readme: string, description: string, githubPath: string}) => (
           <Card
               key={githubPath}
               githubPath={githubPath}
