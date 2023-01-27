@@ -11,12 +11,14 @@ export async function getStaticProps() {
 
   return {
     props: {
-      prompts: await prisma.langChainPrompt.findMany()
+      prompts: await prisma.langChainPrompt.findMany(),
+      agents: await prisma.langChainAgent.findMany(),
+      chains: await prisma.langChainChain.findMany()
     }
   }
 }
 
-export default function Home({ prompts }: { prompts: any}) {
+export default function Home({ prompts, agents, chains }: { prompts: any, agents: any, chains: any }) {
   return (
     <Layout>
       <motion.div
@@ -86,9 +88,66 @@ export default function Home({ prompts }: { prompts: any}) {
           </a>
         </motion.div>
       </motion.div>
+
+      <div className="mt-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+          <div className="relative col-span-1 min-h-72 overflow-hidden">
+            <div className="mx-auto max-w-md text-left">
+              <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-4xl font-bold text-transparent">
+                <Balancer>Prompts</Balancer>
+              </h2>
+            </div>
+        </div>
+      </div>
+
       {/* here we are animating with Tailwind instead of Framer Motion because Framer Motion messes up the z-index for child components */}
       <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
         {prompts.map(({ name, prompt, readme, description, githubPath }: { name: string, prompt: string, readme: string, description: string, githubPath: string}) => (
+          <Card
+              key={githubPath}
+              githubPath={githubPath}
+              prompt={prompt}
+              readme={readme}
+              title={name}
+              description={description}
+            />
+        ))}
+      </div>
+
+      <div className="mt-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+          <div className="relative col-span-1 min-h-72 overflow-hidden">
+            <div className="mx-auto max-w-md text-left">
+              <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-4xl font-bold text-transparent">
+                <Balancer>Agents</Balancer>
+              </h2>
+            </div>
+        </div>
+      </div>
+
+      <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+        {agents.map(({ name, prompt, readme, description, githubPath }: { name: string, prompt: string, readme: string, description: string, githubPath: string}) => (
+          <Card
+              key={githubPath}
+              githubPath={githubPath}
+              prompt={prompt}
+              readme={readme}
+              title={name}
+              description={description}
+            />
+        ))}
+      </div>
+
+      <div className="mt-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+          <div className="relative col-span-1 min-h-72 overflow-hidden">
+            <div className="mx-auto max-w-md text-left">
+              <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-4xl font-bold text-transparent">
+                <Balancer>Chains</Balancer>
+              </h2>
+            </div>
+        </div>
+      </div>
+
+      <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
+        {chains.map(({ name, prompt, readme, description, githubPath }: { name: string, prompt: string, readme: string, description: string, githubPath: string}) => (
           <Card
               key={githubPath}
               githubPath={githubPath}

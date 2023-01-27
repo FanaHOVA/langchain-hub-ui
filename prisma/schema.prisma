@@ -51,7 +51,26 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+// Should collapse this into a singular class with a `itemType` column
 model LangChainPrompt {
+  id         String @id @default(cuid())
+  name       String
+  githubPath String
+  description String
+  prompt     String
+  readme     String
+}
+
+model LangChainAgent {
+  id         String @id @default(cuid())
+  name       String
+  githubPath String
+  description String
+  prompt     String
+  readme     String
+}
+
+model LangChainChain {
   id         String @id @default(cuid())
   name       String
   githubPath String
