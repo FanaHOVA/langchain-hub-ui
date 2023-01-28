@@ -1,0 +1,16 @@
+name: Test build
+run-name: Try `next build` to make sure it doesn't fail in production
+on: [push]
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Prepare Prisma
+        run: |
+          npm run prebuild
+      - name: Build website
+        run: |
+          npm run build
+      - run: echo "🍏 This job's status is ${{ job.status }}."
