@@ -12,8 +12,7 @@ export async function getStaticProps() {
   return {
     props: {
       prompts: await prisma.langChainPrompt.findMany(),
-      agents: await prisma.langChainAgent.findMany(),
-      chains: await prisma.langChainChain.findMany()
+      agents: await prisma.langChainAgent.findMany()
     }
   }
 }
@@ -142,21 +141,10 @@ export default function Home({ prompts, agents, chains }: { prompts: any, agents
               <h2 className="bg-gradient-to-br from-black to-stone-500 bg-clip-text font-display text-4xl font-bold text-transparent">
                 <Balancer>Chains</Balancer>
               </h2>
+
+              <p className='mt-4 w-full'>READMEs not available. Browse the chains <a className='text-green-500 underline' href='https://github.com/hwchase17/langchain-hub/tree/master/chains' target='_blank'>here</a>.</p>
             </div>
         </div>
-      </div>
-
-      <div className="my-10 grid w-full max-w-screen-xl animate-[slide-down-fade_0.5s_ease-in-out] grid-cols-1 gap-5 px-5 md:grid-cols-3 xl:px-0">
-        {chains.map(({ name, prompt, readme, description, githubPath }: { name: string, prompt: string, readme: string, description: string, githubPath: string}) => (
-          <Card
-              key={githubPath}
-              githubPath={githubPath}
-              prompt={prompt}
-              readme={readme}
-              title={name}
-              description={description}
-            />
-        ))}
       </div>
     </Layout>
   );
