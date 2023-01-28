@@ -2,9 +2,6 @@ name: Test build
 run-name: Try `next build` to make sure it doesn't fail in production
 on: [push]
 
-env:
-  DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
-
 jobs:
   test-build:
     runs-on: ubuntu-latest
