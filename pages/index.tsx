@@ -142,7 +142,7 @@ export default function Home({ prompts, agents, chains }: { prompts: any, agents
                 <Balancer>Chains</Balancer>
               </h2>
 
-              <p className='mt-4 w-full'>READMEs not available. Browse the chains <a className='text-green-500 underline' href='https://github.com/hwchase17/langchain-hub/tree/master/chains' target='_blank'>here</a>.</p>
+              <p className='mt-4 w-full'>READMEs not available. Browse the chains <a className='text-green-500 underline' rel="noreferrer" href='https://github.com/hwchase17/langchain-hub/tree/master/chains' target='_blank'>here</a>.</p>
             </div>
         </div>
       </div>

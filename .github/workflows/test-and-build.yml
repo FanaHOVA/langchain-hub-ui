@@ -1,12 +1,27 @@
 name: Test build
 run-name: Try `next build` to make sure it doesn't fail in production
 on: [push]
+
+env:
+  DATABASE_URL: postgresql://postgres:postgres@localhost:5432/postgres
+
 jobs:
   test-build:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - name: Check out repository code
         uses: actions/checkout@v3
+      - run: npm install
       - name: Prepare Prisma
         run: |
           npm run prebuild
